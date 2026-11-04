@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/* 
 public class DiceGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -50,3 +50,4 @@ public class DiceGame {
         scanner.close();
     }
 }
+*/
