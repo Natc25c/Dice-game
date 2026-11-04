@@ -25,7 +25,7 @@ public class DiceGame {
         scanner.nextLine(); 
         for (int i = 0; i < dice.getRounds(); i++) {
             System.out.println("Tryck Enter för att spela runda " + (i + 1) + ".");
-            scanner.nextLine();
+            scanner.nextLine(); // Väntar på att användaren trycker Enter
             System.out.println("Vad tror du tärningen kommer landa på?");
             int gissning = scanner.nextInt();
             scanner.nextLine();
@@ -41,7 +41,6 @@ public class DiceGame {
         }
 
         System.out.println("Totalt fick du " + player1.getDieValue() + " poäng.");
-        System.out.println("Din poäng: " + player1.getDieValue());
         scanner.close();
 
     }
