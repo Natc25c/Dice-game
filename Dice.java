@@ -1,14 +1,14 @@
 import java.util.Random;
 
 public class Dice {
-    private final int amount;
+    private final int rounds;
     private final int sides;
     private final Random random = new Random();
 
-    public Dice(int amount, int sides) {
+    public Dice(int rounds, int sides) {
         try {
-            if (amount < 0) {
-                throw new IllegalArgumentException("Du kan inte ha ett negativt antal tärningar.");
+            if (rounds < 0) {
+                throw new IllegalArgumentException("Du kan inte ha ett negativt antal rundor.");
             }
             if (sides < 2) {
                 throw new IllegalArgumentException("En tärning måste ha minst 2 sidor.");
@@ -17,25 +17,20 @@ public class Dice {
             System.out.println(e.getMessage());
             throw e; 
         }
-        this.amount = amount;
+        this.rounds = rounds;
         this.sides = sides;
     }
 
     public int roll() {
-    int total = 0;
-    for (int i = 0; i < amount; i++) {
-        int result = random.nextInt(sides) + 1;
-        System.out.println("Tärning " + (i + 1) + ": " + result);
-        total += result;
-    }
-    return total;
+        return random.nextInt(sides) + 1;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getRounds() {
+        return rounds;
     }
 
     public int getSides() {
         return sides;
     }
+   
 }
