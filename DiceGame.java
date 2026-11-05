@@ -7,18 +7,25 @@ public class DiceGame {
         Player player1 = new Player("", 0, 0); //Skapar en ny spelare med tomt namn, 0 poäng och 0 tärningar
         
         System.out.println("---- Välkommen till Tärningsspelet! --");
-        System.out.println("I detta spelet kan du rulla tärningar och samla poäng.");
+        System.out.println("I detta spel kan du rulla tärningar och samla poäng.");
         System.out.println("Du kan snart välja hur många sidor din tärning har och antalet rundor du vill spela.");
         System.out.println("Men först, vad heter du?");
         player1.setNamn(scanner.nextLine());
         System.out.println("Hej " + player1.getNamn() + "!");
 
-        System.out.println("Hur många rundor vill du spela?");
+        System.out.println("Hur många rundor vill du spela? Du kan max spela 20 rundor.");
         int antalRundor = scanner.nextInt(); //Läser in antalet rundor som användaren vill spela
-        
+        while (antalRundor < 1 || antalRundor > 20) { // Ser till så spelaren inte väljer fler än 20 rundor 
+            System.out.println("Ogiltigt val. Välj ett antal mellan 1 och 20.");
+            antalRundor = scanner.nextInt();
+        }
 
-        System.out.println("Hur många sidor har din tärning?");
+        System.out.println("Hur många sidor har din tärning? Du kan välja mellan 2 och 100 sidor.");
         int val = scanner.nextInt(); //Läser in antalet sidor som användaren vill ha på sin tärning
+        while (val < 2 || val > 100) { // Ser till så spelaren inte väljer färre än 2 eller fler än 100 sidor
+            System.out.println("Ogiltigt val. Välj ett antal mellan 2 och 100.");
+            val = scanner.nextInt();
+        }
         int antalSidor = val;
         Dice dice = new Dice(antalRundor, antalSidor); //Skapar en ny tärning med det antal sidor som användaren vill ha
 
@@ -40,7 +47,7 @@ public class DiceGame {
             System.out.println("Tärningen landade på: " + result);
         }
 
-        System.out.println("Totalt fick du " + player1.getDieValue() + " poäng.");
+        System.out.println("Spelet är nu slut! Totalt fick du " + player1.getDieValue() + " poäng.");
         scanner.close();
 
     }
