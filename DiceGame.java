@@ -8,6 +8,7 @@ public class DiceGame {
         
         System.out.println("---- Välkommen till Tärningsspelet! --");
         System.out.println("I detta spel kan du rulla tärningar och samla poäng.");
+        System.out.println("Du gissar vad tärningen kommer landa på och får 1 poäng om du gissar rätt.");
         System.out.println("Du kan snart välja hur många sidor din tärning har och antalet rundor du vill spela.");
         System.out.println("Men först, vad heter du?");
         player1.setNamn(scanner.nextLine());
