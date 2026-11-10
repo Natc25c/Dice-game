@@ -20,8 +20,9 @@ public class Player {
         this.points += poäng;
     }
 
-    public int rollDice(Dice dice) {
-        return dice.roll();
+    public int rollDice(Die die) {
+        die.roll();
+        return die.getLastRoll();
     }
 
     public int getDieValue() {

@@ -1,11 +1,12 @@
 import java.util.Random;
 
-public class Dice {
+public class Die {
     private final int rounds;
     private final int sides;
     private final Random random = new Random();
+    private int lastRoll;
 
-    public Dice(int rounds, int sides) {
+    public Die(int rounds, int sides) {
         try {
             if (rounds < 0) {
                 throw new IllegalArgumentException("Du kan inte ha ett negativt antal rundor.");
@@ -21,8 +22,12 @@ public class Dice {
         this.sides = sides;
     }
 
-    public int roll() {
-        return random.nextInt(sides) + 1;
+    public void roll() {
+        lastRoll = random.nextInt(sides) + 1;
+    }
+
+    public int getLastRoll() {
+        return lastRoll;
     }
 
     public int getRounds() {

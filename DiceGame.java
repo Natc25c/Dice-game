@@ -27,17 +27,17 @@ public class DiceGame {
             val = scanner.nextInt();
         }
         int antalSidor = val;
-        Dice dice = new Dice(antalRundor, antalSidor); //Skapar en ny tärning med det antal sidor som användaren vill ha
+        Die die = new Die(antalRundor, antalSidor); //Skapar en ny tärning med det antal sidor som användaren vill ha
 
         scanner.nextLine(); 
-        for (int i = 0; i < dice.getRounds(); i++) {
+        for (int i = 0; i < die.getRounds(); i++) {
             System.out.println("Tryck Enter för att spela runda " + (i + 1) + ".");
             scanner.nextLine(); // Väntar på att användaren trycker Enter
             System.out.println("Vad tror du tärningen kommer landa på?");
             int gissning = scanner.nextInt();
             scanner.nextLine();
 
-            int result = player1.rollDice(dice);
+            int result = player1.rollDice(die);
             if (gissning == result) {
                 System.out.println("Grattis! Du gissade rätt!");
                 player1.increaseScore(1); // Ger spelaren en poäng för en rätt gissning
@@ -45,10 +45,51 @@ public class DiceGame {
                 System.out.println("Tyvärr, du gissade fel.");
             }
             System.out.println("Tärningen landade på: " + result);
+            showDie(result);
         }
 
         System.out.println("Spelet är nu slut! Totalt fick du " + player1.getDieValue() + " poäng.");
         scanner.close();
 
+    }
+
+    private static void showDie(int value) {
+        String[] face;
+
+        if (value >= 6) {
+            String number = String.valueOf(value);
+            int padding = (7 - number.length()) / 2;
+            String middle = "       ".substring(0, padding)
+                    + number
+                    + "       ".substring(0, 7 - padding - number.length());
+            face = new String[] {"       ", middle, "       "};
+        } else {
+            switch (value) {
+                case 1:
+                    face = new String[] {"       ", "   *   ", "       "};
+                    break;
+                case 2:
+                    face = new String[] {" *     ", "       ", "     * "};
+                    break;
+                case 3:
+                    face = new String[] {" *     ", "   *   ", "     * "};
+                    break;
+                case 4:
+                    face = new String[] {" *   * ", "       ", " *   * "};
+                    break;
+                case 5:
+                    face = new String[] {" *   * ", "   *   ", " *   * "};
+                    break;
+                default:
+                    System.out.println("Resultat: " + value);
+                    return;
+            }
+        }
+
+        System.out.println("+-------+");
+        for (String line : face) {
+            System.out.println("|" + line + "|");
+        }
+        System.out.println("+-------+");
     }
 }
